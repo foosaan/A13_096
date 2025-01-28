@@ -3,6 +3,7 @@ package com.example.projectakhirpam_a13.ui.view.event
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.annotation.RequiresExtension
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import androidx.compose.foundation.Image
@@ -59,6 +60,7 @@ object DestinasiHome : DestinasiNavigasi {
     override val titleRes = "Home Event"
 }
 
+@RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -91,7 +93,7 @@ fun HomeScreenEvent(
             FloatingActionButton(
                 onClick = navigateToEvent,
                 shape = MaterialTheme.shapes.medium,
-
+                containerColor = Color(0xFF2196F3),
                 modifier = Modifier.padding(18.dp)
             ) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Event")
@@ -99,13 +101,10 @@ fun HomeScreenEvent(
             FloatingActionButton(
                 onClick = navigateToEventEntry,
                 shape = MaterialTheme.shapes.medium,
-                containerColor = Color(0xFFD6ED17), // Warna FAB
-
+                containerColor = Color(0xFF2196F3),
                 modifier = Modifier.padding(18.dp)
-
             ) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Tambah Event")
-
             }
         },
         bottomBar = {
@@ -121,17 +120,6 @@ fun HomeScreenEvent(
         }
     ) { innerPadding ->
         Box(modifier = Modifier.fillMaxSize()) {
-            // Gambar background blur
-//            Image(
-//                painter = painterResource(id = R.drawable.log), // Ganti dengan gambar yang sesuai
-//                contentDescription = "Background Image",
-//                modifier = Modifier
-//                    .fillMaxSize()
-//                    .graphicsLayer {
-//                        // Blur Effect
-//                        shadowElevation = 10f
-//                    }
-//            )
             EventStatus(
                 homeUiState = viewModel.EventUIState,
                 retryAction = { viewModel.getEvent() },
@@ -176,11 +164,6 @@ fun EventStatus(
 }
 @Composable
 fun OnLoading(modifier: Modifier = Modifier) {
-//    Image(
-//        modifier = modifier.size(200.dp),
-//        painter = painterResource(R.drawable.loading),
-//        contentDescription = stringResource(R.string.loading)
-//    )
 }
 @Composable
 fun OnError(retryAction: () -> Unit, modifier: Modifier = Modifier) {
@@ -189,16 +172,6 @@ fun OnError(retryAction: () -> Unit, modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-//        Image(
-//            painter = painterResource(id = R.drawable.eror), contentDescription = ""
-//        )
-//        Text(text = stringResource(R.string.loading_failed), modifier = Modifier.padding(16.dp))
-//        Button(
-//            onClick = retryAction,
-//            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFD6ED17)) // Warna tombol Retry
-//        ) {
-//            Text(stringResource(R.string.retry))
-//        }
     }
 }
 @RequiresApi(Build.VERSION_CODES.O)
@@ -241,7 +214,7 @@ fun EventCard(
     Card(
         modifier = modifier,
         shape = MaterialTheme.shapes.medium,
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFD6ED17)), // Mengubah warna latar belakang card
+        colors = CardDefaults.cardColors(containerColor = Color(0xFF2196F3)), // Mengubah warna latar belakang card
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
         Column(

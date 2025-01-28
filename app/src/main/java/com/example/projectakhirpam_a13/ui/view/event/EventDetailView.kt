@@ -70,7 +70,7 @@ fun DetailEventView(
                 },
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(16.dp),
-                containerColor = Color(0xFFD6ED17), // Warna FAB
+                containerColor = Color(0xFF2196F3), // Warna FAB
 
             ) {
                 Icon(
@@ -83,17 +83,6 @@ fun DetailEventView(
         val detailUiState by viewModel.detailUiState.collectAsState()
 
         Box(modifier = Modifier.fillMaxSize()) {
-            // Background Image with Blur Effect
-//            Image(
-//                painter = painterResource(id = R.drawable.log), // Your background image
-//                contentDescription = null,
-//                modifier = Modifier
-//                    .fillMaxSize()
-//                    .graphicsLayer {
-//                        // Apply blur effect here (you can adjust the blur radius as needed)
-//                        this.shadowElevation = 8f
-//                    }
-//            )
 
             BodyDetailEvent(
                 modifier = Modifier.padding(innerPadding),
@@ -149,7 +138,7 @@ fun ItemDetailEvent(event: Event) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFD6ED17), //
+            containerColor = Color(0xFF2196F3), //
             contentColor = Color.Black // Ganti warna teks dalam Card
         )
     ) {
@@ -188,4 +177,5 @@ fun ComponentDetailEvent(
         )
     }
 }
+
 
